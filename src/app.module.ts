@@ -2,15 +2,13 @@
 import { configModule } from './config-dynamic-module';
 import { DynamicModule, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-//import { UserAccountsModule } from './modules/user-accounts/user-accounts.module';
-//import { BloggersPlatformModule } from './modules/bloggers-platform/bloggers-platform.module';
+import { UserAccountsModule } from './modules/user-accounts/user-accounts.module';
+import { BloggersPlatformModule } from './modules/bloggers-platform/bloggers-platform.module';
 import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { DomainHttpExceptionsFilter } from './core/exceptions/filters/domain-exceptions.filter';
 import { CoreModule } from './core/core.module';
 import { CoreConfig } from './core/core.config';
-import { AppService } from './app.service';
-import { AppController } from './app.controller';
-//import { NotificationsModule } from './modules/notifications/notifications.module';
+import { NotificationsModule } from './modules/notifications/notifications.module';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { TestingModule } from './modules/testing/testing.modules';
 import { ConfigModule, ConfigService } from '@nestjs/config';
@@ -42,21 +40,20 @@ import databaseConf, { type DatabaseConfig } from './core/config/db.config';
       throttlers: [
         {
           ttl: 10000, // Время жизни в секундах 
-          limit: 100000000000000000 //5, // Максимум 5 запросов
+          limit: 5, // Максимум 5 запросов 100000000000000000 //
         },
       ],
     }),
     
-  //  UserAccountsModule, //все модули должны быть заимпортированы в корневой модуль, либо напрямую, либо по цепочке (через другие модули)
-  //  TestingModule,
-  //  BloggersPlatformModule,
+    UserAccountsModule,
+    TestingModule,
+    BloggersPlatformModule,
     CoreModule,
-  //  NotificationsModule,
+    NotificationsModule,
     configModule,
   ],
-  controllers: [AppController],
+  controllers: [],
   providers: [
-    AppService,
     //регистрация глобальных exception filters
     //важен порядок регистрации! Первым сработает DomainHttpExceptionsFilter!
     //https://docs.nestjs.com/exception-filters#binding-filters

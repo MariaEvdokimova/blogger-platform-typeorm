@@ -1,17 +1,21 @@
-import { Controller, Delete, HttpCode, HttpStatus, Inject } from '@nestjs/common';
+import { Controller, Delete, HttpCode, HttpStatus } from '@nestjs/common';
 import { SkipThrottle } from '@nestjs/throttler';
-import { Pool } from 'pg';
+import { DataSource } from 'typeorm';
 
 @SkipThrottle()
 @Controller('testing')
 export class TestingController {
   constructor(
-    @Inject('PG_POOL') private readonly db: Pool,
+    private readonly dataSource: DataSource
   ) {}
 
   @Delete('all-data')
   @HttpCode(HttpStatus.NO_CONTENT)
   async deleteAll() {
+    if (process.env.NODE_ENV === 'production') {
+      throw new Error('Cannot truncate tables in production');
+    }
+
     const tables = [
       'users', 
       'emailConfirmation', 
@@ -22,10 +26,15 @@ export class TestingController {
       'commentLikes',
       'postLikes'
     ]; 
-    const promises = tables.map((table) =>
-      this.db.query(`TRUNCATE TABLE "${table}" RESTART IDENTITY CASCADE;`)
-    );
-    await Promise.all(promises);
+
+    for (const table of tables) {
+      await this.dataSource.query(`TRUNCATE TABLE "${table}" RESTART IDENTITY CASCADE;`);
+    }
+
+    // const promises = tables.map((table) =>
+    //   this.dataSource.query(`TRUNCATE TABLE "${table}" RESTART IDENTITY CASCADE;`)
+    // );
+    // await Promise.all(promises);
 
     return {
       status: 'succeeded',
