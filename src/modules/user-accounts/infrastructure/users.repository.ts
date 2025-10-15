@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
-import { DomainException } from "src/core/exceptions/domain-exceptions";
-import { DomainExceptionCode } from "src/core/exceptions/domain-exception-codes";
+import { DomainException } from "@src/core/exceptions/domain-exceptions";
+import { DomainExceptionCode } from "@src/core/exceptions/domain-exception-codes";
 import { InjectRepository } from "@nestjs/typeorm";
 import { User } from "../domain/entities/user.entity";
 import { IsNull, Repository } from "typeorm";

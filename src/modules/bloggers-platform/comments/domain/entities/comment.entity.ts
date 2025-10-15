@@ -1,9 +1,10 @@
 
-import { BaseEntity } from "src/core/entities/base.entity";
-import { Post } from "src/modules/bloggers-platform/posts/domain/entities/post.entity";
-import { User } from "src/modules/user-accounts/domain/entities/user.entity";
+import { BaseEntity } from "@src/core/entities/base.entity";
+import { Post } from "@src/modules/bloggers-platform/posts/domain/entities/post.entity";
+import { User } from "@src/modules/user-accounts/domain/entities/user.entity";
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne } from "typeorm";
 import { CommentLike } from "./comment-like.entity";
+import { CommentInputDto } from "../../api/input-dto/comment.input-dto";
 
 export const contentConstraints = {
   minLength: 20,
@@ -29,5 +30,13 @@ export class Comment extends BaseEntity {
   public userId: number;
 
   @OneToMany( () => CommentLike, commentLike => commentLike.comment )
-  commentLikes: CommentLike[]
+  commentLikes: CommentLike[];
+  
+  static create(dto: CommentInputDto, postId: number, userId: number): Comment {
+    const comment =  new this();
+      comment.content = dto.content;     
+      comment.postId = postId;
+      comment.userId = userId;
+    return comment;
+  }
 }

@@ -5,7 +5,7 @@ import { DomainException } from "../../../../../core/exceptions/domain-exception
 import { DomainExceptionCode } from "../../../../../core/exceptions/domain-exception-codes";
 import { UsersFactory } from "../../factories/users.factory";
 import { EmailConfirmationFactory } from "../../factories/email-confirmation.factory";
-import { EmailConfirmationRepository } from "src/modules/user-accounts/infrastructure/email-confirmation.repository";
+import { EmailConfirmationRepository } from "@src/modules/user-accounts/infrastructure/email-confirmation.repository";
 
 export class CreateUserCommand {
   constructor(public dto: CreateUserDto) {}

@@ -40,7 +40,7 @@ import databaseConf, { type DatabaseConfig } from './core/config/db.config';
       throttlers: [
         {
           ttl: 10000, // Время жизни в секундах 
-          limit: 5, // Максимум 5 запросов 100000000000000000 //
+          limit: 100000000000000000, // Максимум 5 запросов 100000000000000000 // 5
         },
       ],
     }),

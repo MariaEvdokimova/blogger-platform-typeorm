@@ -4,7 +4,7 @@ import { DomainException } from "../../../../../core/exceptions/domain-exception
 import { DomainExceptionCode } from "../../../../../core/exceptions/domain-exception-codes";
 import { NewPasswordInputDto } from "../../../../../modules/user-accounts/api/input-dto/new-password.input-dto";
 import { CryptoService } from "../../services/crypto.service";
-import { EmailConfirmationRepository } from "src/modules/user-accounts/infrastructure/email-confirmation.repository";
+import { EmailConfirmationRepository } from "@src/modules/user-accounts/infrastructure/email-confirmation.repository";
 
 export class NewPasswordCommand {
   constructor(public dto: NewPasswordInputDto) {}

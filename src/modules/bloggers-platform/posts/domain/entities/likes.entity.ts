@@ -1,7 +1,8 @@
-import { BaseEntity } from "src/core/entities/base.entity";
+import { BaseEntity } from "@src/core/entities/base.entity";
 import { Column, Entity, JoinColumn, ManyToOne, OneToOne } from "typeorm";
 import { Post } from "./post.entity";
-import { User } from "src/modules/user-accounts/domain/entities/user.entity";
+import { User } from "@src/modules/user-accounts/domain/entities/user.entity";
+import { CreatePostLikeStatusDomainDto } from "../dto/create-post-like-status.domain.dto";
 
 export enum LikeStatus {
   None = 'None', 
@@ -26,4 +27,13 @@ export class PostLike extends BaseEntity {
 
   @Column()
   public userId: number;  
+
+  static create(dto: CreatePostLikeStatusDomainDto): PostLike {
+    const postLike = new this();
+      postLike.postId = dto.postId;
+      postLike.userId = dto.userId;
+      postLike.status = dto.status;
+
+    return postLike;
+  }
 }

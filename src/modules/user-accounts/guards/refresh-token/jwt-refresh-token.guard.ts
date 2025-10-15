@@ -1,8 +1,8 @@
 import { CanActivate, ExecutionContext, Inject, Injectable } from "@nestjs/common";
-import { cookieConfig } from "src/core/config/cookie.config";
+import { cookieConfig } from "@src/core/config/cookie.config";
 import { RequestWithCookies } from "./request-with-cookies";
-import { DomainException } from "src/core/exceptions/domain-exceptions";
-import { DomainExceptionCode } from "src/core/exceptions/domain-exception-codes";
+import { DomainException } from "@src/core/exceptions/domain-exceptions";
+import { DomainExceptionCode } from "@src/core/exceptions/domain-exception-codes";
 import { JwtService } from "@nestjs/jwt";
 import { REFRESH_TOKEN_STRATEGY_INJECT_TOKEN } from "../../constants/auth-tokens.inject-constants";
 import { SecurityDeviceRepository } from "../../infrastructure/security-devices.repository";
