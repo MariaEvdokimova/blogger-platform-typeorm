@@ -3,10 +3,10 @@ import { CommandHandler, ICommandHandler } from "@nestjs/cqrs";
 import { JwtService } from "@nestjs/jwt";
 import { ACCESS_TOKEN_STRATEGY_INJECT_TOKEN, REFRESH_TOKEN_STRATEGY_INJECT_TOKEN } from "../../../../user-accounts/constants/auth-tokens.inject-constants";
 import { RequestMetadataDto } from "../../../../user-accounts/dto/request-metadata.dto";
-import { SecurityDeviceRepository } from "src/modules/user-accounts/infrastructure/security-devices.repository";
+import { SecurityDeviceRepository } from "@src/modules/user-accounts/infrastructure/security-devices.repository";
 import { SecurityDevicesFactory } from "../../factories/security-devices.factory";
 import { UuidService } from "../../services/uuid.service";
-import { SecurityDevice } from "src/modules/user-accounts/domain/entities/security-device.entity";
+import { SecurityDevice } from "@src/modules/user-accounts/domain/entities/security-device.entity";
 
 export class LoginUserCommand {
   constructor(

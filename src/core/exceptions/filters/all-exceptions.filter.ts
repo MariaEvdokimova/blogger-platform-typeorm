@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { ErrorResponseBody } from './error-response-body.type';
-import { CoreConfig } from 'src/core/core.config';
+import { CoreConfig } from '@src/core/core.config';
 
 //https://docs.nestjs.com/exception-filters#exception-filters-1
 //Все ошибки

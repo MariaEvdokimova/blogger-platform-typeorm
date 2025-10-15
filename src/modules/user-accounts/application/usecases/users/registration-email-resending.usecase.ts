@@ -6,7 +6,7 @@ import { UuidService } from "../../services/uuid.service";
 import { EmailExamples } from "../../../../notifications/email-examples";
 import { UserRegisteredEvent } from "../../../../user-accounts/domain/events/user-registered.event";
 import { RegistrationEmailResendingInputDto } from "../../../../user-accounts/api/input-dto/registration-email-resending.input-dto";
-import { EmailConfirmationRepository } from "src/modules/user-accounts/infrastructure/email-confirmation.repository";
+import { EmailConfirmationRepository } from "@src/modules/user-accounts/infrastructure/email-confirmation.repository";
 
 export class RegistrationEmailResendingCommand {
   constructor(public dto: RegistrationEmailResendingInputDto) {}

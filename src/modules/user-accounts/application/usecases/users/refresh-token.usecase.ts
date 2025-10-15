@@ -1,11 +1,11 @@
 import { Inject } from "@nestjs/common";
 import { CommandHandler, ICommandHandler } from "@nestjs/cqrs";
 import { JwtService } from "@nestjs/jwt";
-import { DomainExceptionCode } from "src/core/exceptions/domain-exception-codes";
-import { DomainException } from "src/core/exceptions/domain-exceptions";
-import { ACCESS_TOKEN_STRATEGY_INJECT_TOKEN, REFRESH_TOKEN_STRATEGY_INJECT_TOKEN } from "src/modules/user-accounts/constants/auth-tokens.inject-constants";
-import { UsersQueryRepository } from "src/modules/user-accounts/infrastructure/query/users.query-repository";
-import { SecurityDeviceRepository } from "src/modules/user-accounts/infrastructure/security-devices.repository";
+import { DomainExceptionCode } from "@src/core/exceptions/domain-exception-codes";
+import { DomainException } from "@src/core/exceptions/domain-exceptions";
+import { ACCESS_TOKEN_STRATEGY_INJECT_TOKEN, REFRESH_TOKEN_STRATEGY_INJECT_TOKEN } from "@src/modules/user-accounts/constants/auth-tokens.inject-constants";
+import { UsersQueryRepository } from "@src/modules/user-accounts/infrastructure/query/users.query-repository";
+import { SecurityDeviceRepository } from "@src/modules/user-accounts/infrastructure/security-devices.repository";
 
 export class RefreshTokenCommand {
   constructor(

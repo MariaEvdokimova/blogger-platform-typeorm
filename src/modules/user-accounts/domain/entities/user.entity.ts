@@ -1,10 +1,10 @@
-import { BaseEntity } from 'src/core/entities/base.entity';
+import { BaseEntity } from '@src/core/entities/base.entity';
 import { Column, Entity, OneToMany, OneToOne } from 'typeorm';
 import { EmailConfirmation } from './email-confirmation.entity';
 import { SecurityDevice } from './security-device.entity';
-import { PostLike } from 'src/modules/bloggers-platform/posts/domain/entities/likes.entity';
-import { Comment } from 'src/modules/bloggers-platform/comments/domain/entities/comment.entity';
-import { CommentLike } from 'src/modules/bloggers-platform/comments/domain/entities/comment-like.entity';
+import { PostLike } from '@src/modules/bloggers-platform/posts/domain/entities/likes.entity';
+import { Comment } from '@src/modules/bloggers-platform/comments/domain/entities/comment.entity';
+import { CommentLike } from '@src/modules/bloggers-platform/comments/domain/entities/comment-like.entity';
 
 export const loginConstraints = {
   minLength: 3,

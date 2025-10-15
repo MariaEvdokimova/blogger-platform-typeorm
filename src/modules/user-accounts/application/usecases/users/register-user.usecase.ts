@@ -7,7 +7,7 @@ import { UuidService } from "../../services/uuid.service";
 import { EmailExamples } from "../../../../notifications/email-examples";
 import { UserRegisteredEvent } from "../../../../user-accounts/domain/events/user-registered.event";
 import { UsersFactory } from "../../factories/users.factory";
-import { EmailConfirmationRepository } from "src/modules/user-accounts/infrastructure/email-confirmation.repository";
+import { EmailConfirmationRepository } from "@src/modules/user-accounts/infrastructure/email-confirmation.repository";
 import { EmailConfirmationFactory } from "../../factories/email-confirmation.factory";
 import { add } from "date-fns/add";
 

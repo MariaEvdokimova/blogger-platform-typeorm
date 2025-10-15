@@ -3,7 +3,7 @@ import { DomainExceptionCode } from "../../../../../core/exceptions/domain-excep
 import { DomainException } from "../../../../../core/exceptions/domain-exceptions";
 import { RegistrationConfirmationInputDto } from "../../../../user-accounts/api/input-dto/registration-confirmation.input-dto";
 import { UsersRepository } from "../../../../user-accounts/infrastructure/users.repository";
-import { EmailConfirmationRepository } from "src/modules/user-accounts/infrastructure/email-confirmation.repository";
+import { EmailConfirmationRepository } from "@src/modules/user-accounts/infrastructure/email-confirmation.repository";
 
 export class RegistrationConfirmationCommand {
   constructor(public dto: RegistrationConfirmationInputDto) {}

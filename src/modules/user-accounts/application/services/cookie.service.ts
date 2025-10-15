@@ -1,5 +1,5 @@
 import { Response } from 'express';
-import { cookieConfig } from 'src/core/config/cookie.config';
+import { cookieConfig } from '@src/core/config/cookie.config';
 
 export class CookieService {
   static setRefreshTokenCookie(response: Response, refreshToken: string): void {

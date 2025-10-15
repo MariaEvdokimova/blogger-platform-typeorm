@@ -1,7 +1,7 @@
 import { CommandHandler, ICommandHandler } from "@nestjs/cqrs";
-import { DomainExceptionCode } from "src/core/exceptions/domain-exception-codes";
-import { DomainException } from "src/core/exceptions/domain-exceptions";
-import { SecurityDeviceRepository } from "src/modules/user-accounts/infrastructure/security-devices.repository";
+import { DomainExceptionCode } from "@src/core/exceptions/domain-exception-codes";
+import { DomainException } from "@src/core/exceptions/domain-exceptions";
+import { SecurityDeviceRepository } from "@src/modules/user-accounts/infrastructure/security-devices.repository";
 
 
 export class DeleteDeviceByIdCommand {
