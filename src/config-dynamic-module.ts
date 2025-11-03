@@ -1,12 +1,13 @@
 import { ConfigModule } from "@nestjs/config";
+import { envFilePaths } from "./env-file-paths";
+import databaseConf from './core/db/db.config';
+
+console.log('Loading env files from:', envFilePaths);
+
 
 // must import this const in the head of your app.module.ts
 export const configModule = ConfigModule.forRoot({
-  envFilePath: [
-    process.env.ENV_FILE_PATH?.trim() || '',
-    `.env.${process.env.NODE_ENV}.local`,
-    `.env.${process.env.NODE_ENV}`,
-    '.env.production',
-  ],
-  isGlobal: true, //isGlobal делает модуль глобальным (автоматически регистрируется в каждый модуле)
+  isGlobal: true, //isGlobal делает модуль глобальным (автоматически регистрируется в каждый модуле)  
+  envFilePath: envFilePaths,
+  load: [databaseConf],
 });

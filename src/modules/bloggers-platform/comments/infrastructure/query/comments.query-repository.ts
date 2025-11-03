@@ -84,13 +84,11 @@ export class CommentsQueryRepository {
 
     const pagenatedCommentsQueryBuilder = commentsQueryBuilder
       .leftJoin('c.user', 'u')
-      .select([
-        'c.id', 
-        'c.content', 
-        'c.postId', 
-        'c.userId', 
-        'c.createdAt',
-      ])
+      .select('c.id', 'id') 
+      .addSelect('c.content', 'content')
+      .addSelect('c.postId', 'postId')
+      .addSelect('c.userId', 'userId')
+      .addSelect('c.createdAt', 'createdAt')
       .addSelect('u.login', 'userLogin')
       .orderBy( sortBy, sortDirection )
       .limit( query.pageSize )

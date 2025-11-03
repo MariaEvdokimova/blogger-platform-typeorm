@@ -1,7 +1,7 @@
 
-import { BaseEntity } from "@src/core/entities/base.entity";
-import { Post } from "@src/modules/bloggers-platform/posts/domain/entities/post.entity";
-import { User } from "@src/modules/user-accounts/domain/entities/user.entity";
+import { BaseEntity } from "../../../../../core/db/entities/base.entity";
+import { Post } from "../../../../../modules/bloggers-platform/posts/domain/entities/post.entity";
+import { User } from "../../../../../modules/user-accounts/domain/entities/user.entity";
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne } from "typeorm";
 import { CommentLike } from "./comment-like.entity";
 import { CommentInputDto } from "../../api/input-dto/comment.input-dto";
@@ -22,8 +22,7 @@ export class Comment extends BaseEntity {
   @Column()
   public postId: number;
   
-  @OneToOne( () => User, user => user.comment )
-  @JoinColumn()
+  @ManyToOne( () => User, user => user.comment )
   user: User;
 
   @Column()

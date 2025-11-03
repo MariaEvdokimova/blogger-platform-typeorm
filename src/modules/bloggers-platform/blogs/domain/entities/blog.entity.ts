@@ -1,5 +1,5 @@
-import { BaseEntity } from "@src/core/entities/base.entity";
-import { Post } from "@src/modules/bloggers-platform/posts/domain/entities/post.entity";
+import { BaseEntity } from "../../../../../core/db/entities/base.entity";
+import { Post } from "../../../../../modules/bloggers-platform/posts/domain/entities/post.entity";
 import { Column, Entity, OneToMany } from "typeorm";
 import { CreateBlogInputDto } from "../../api/input-dto/blogs.input-dto";
 
