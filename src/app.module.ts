@@ -11,15 +11,13 @@ import { CoreConfig } from './core/core.config';
 import { NotificationsModule } from './modules/notifications/notifications.module';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { TestingModule } from './modules/testing/testing.modules';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import databaseConf, { type DatabaseConfig } from './core/config/db.config';
+import { ConfigService } from '@nestjs/config';
+import { type DatabaseConfig } from './core/db/db.config';
 
 @Module({
-  imports: [
-    ConfigModule.forRoot({
-      isGlobal: true,
-      load: [databaseConf],
-    }),
+  imports: [    
+    configModule,  // 🔝 всегда первым!
+
     TypeOrmModule.forRootAsync({
       useFactory(config: ConfigService<DatabaseConfig>) {
         const dbConfig = config.get<DatabaseConfig['database']>('database', {
@@ -32,6 +30,7 @@ import databaseConf, { type DatabaseConfig } from './core/config/db.config';
 
       return {
         ...dbConfig,
+        autoLoadEntities: true,
       };
     },
       inject: [ConfigService],
@@ -50,7 +49,6 @@ import databaseConf, { type DatabaseConfig } from './core/config/db.config';
     BloggersPlatformModule,
     CoreModule,
     NotificationsModule,
-    configModule,
   ],
   controllers: [],
   providers: [

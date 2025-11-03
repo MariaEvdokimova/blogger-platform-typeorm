@@ -1,9 +1,9 @@
-import { BaseEntity } from "@src/core/entities/base.entity";
-import { Blog } from "@src/modules/bloggers-platform/blogs/domain/entities/blog.entity";
+import { BaseEntity } from "../../../../../core/db/entities/base.entity";
+import { Blog } from "../../../../../modules/bloggers-platform/blogs/domain/entities/blog.entity";
 import { Column, Entity, ManyToOne, OneToMany } from "typeorm";
 import { PostLike } from "./likes.entity";
-import { Comment } from "@src/modules/bloggers-platform/comments/domain/entities/comment.entity";
-import { CreatePostInBlogInputDto } from "@src/modules/bloggers-platform/blogs/api/input-dto/post-in-blog.input-dto";
+import { Comment } from "../../../../../modules/bloggers-platform/comments/domain/entities/comment.entity";
+import { CreatePostInBlogInputDto } from "../../../../../modules/bloggers-platform/blogs/api/input-dto/post-in-blog.input-dto";
 
 export const titleConstraints = {
   minLength: 1,

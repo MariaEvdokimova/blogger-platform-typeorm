@@ -1,7 +1,7 @@
-import { BaseEntity } from "@src/core/entities/base.entity";
+import { BaseEntity } from "../../../../../core/db/entities/base.entity";
 import { Column, Entity, JoinColumn, ManyToOne, OneToOne } from "typeorm";
 import { Comment } from "./comment.entity";
-import { User } from "@src/modules/user-accounts/domain/entities/user.entity";
+import { User } from "../../../../../modules/user-accounts/domain/entities/user.entity";
 import { CreateCommentLikeStatusDomainDto } from "../dto/create-comment-like-status.domain.dto";
 
 export enum LikeStatus {
@@ -21,8 +21,7 @@ export class CommentLike extends BaseEntity {
   @Column()
   public commentId: number;
   
-  @OneToOne( () => User, user => user.commentLike )
-  @JoinColumn()
+  @ManyToOne( () => User, user => user.commentLike )
   user: User;
 
   @Column()
